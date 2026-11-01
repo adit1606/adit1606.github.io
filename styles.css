@@ -16,6 +16,7 @@
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
     "Helvetica Neue", Helvetica, Arial, sans-serif;
   --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --theme-transition: background-color 0.4s ease, color 0.3s ease,
     border-color 0.4s ease, box-shadow 0.4s ease;
 
@@ -49,7 +50,12 @@
 
 /* ========== Base ========== */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+}
 body {
   margin: 0;
   background: var(--bg);
@@ -62,7 +68,6 @@ body {
   transition: var(--theme-transition);
 }
 a { color: var(--accent); text-decoration: none; }
-a:hover { color: var(--accent-hover); }
 h1, h2, h3 { margin: 0; color: var(--text); }
 p { margin: 0 0 1em; }
 
@@ -84,18 +89,15 @@ p { margin: 0 0 1em; }
   color: #fff;
   border: 0;
   padding: 12px 24px;
-  transition: background-color 0.3s var(--ease), transform 0.15s var(--ease);
+  transition: background-color 200ms ease, transform 160ms var(--ease-out);
 }
-.btn:hover { background: var(--accent-hover); color: #fff; }
-.btn:active { transform: scale(0.98); }
+.btn:active { transform: scale(0.97); }
 .btn--pill { border-radius: var(--r-full); }
 .btn--small { font-size: 12px; padding: 5px 12px; }
 .btn--large { font-size: clamp(17px, 2.4vw, 21px); padding: 16px 32px; }
 
 .link-more { font-size: 17px; }
-.link-more:hover { text-decoration: underline; }
-.link-more span { display: inline-block; transition: transform 0.3s var(--ease); }
-.link-more:hover span { transform: translateX(3px); }
+.link-more span { display: inline-block; transition: transform 160ms var(--ease-out); }
 
 /* ========== Nav ========== */
 .nav {
@@ -112,17 +114,14 @@ p { margin: 0 0 1em; }
   height: 52px; padding: 0 var(--gutter);
 }
 .nav__brand { color: var(--text); font-size: 14px; font-weight: 600; }
-.nav__brand:hover { color: var(--text); }
 .nav nav { margin-left: auto; }
 .nav__links { list-style: none; display: flex; gap: 28px; margin: 0; padding: 0; }
 .nav__links a { color: var(--text); font-size: 12px; opacity: 0.8; transition: opacity 0.3s; }
-.nav__links a:hover { opacity: 1; color: var(--text); }
 
 .theme-toggle {
   width: 32px; height: 32px; display: grid; place-items: center;
   background: none; border: 0; border-radius: var(--r-full); cursor: pointer; color: var(--text);
 }
-.theme-toggle:hover { background: var(--surface); }
 .theme-toggle svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; }
 .theme-toggle .icon-moon { fill: currentColor; stroke: none; }
 .icon-sun { display: none; }
@@ -185,7 +184,7 @@ p { margin: 0 0 1em; }
   border: 1px solid var(--border);
   box-shadow: var(--shadow-sm);
   border-radius: var(--r-xl);
-  transition: var(--theme-transition), transform 0.5s var(--ease);
+  transition: var(--theme-transition);
 }
 .section--surface .card { background: var(--bg); }
 :root[data-theme="dark"] .section--surface .card { background: var(--elevated); }
@@ -331,13 +330,25 @@ p { margin: 0 0 1em; }
 }
 .footer p { margin: 0; }
 
-/* ========== Scroll reveal ========== */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.8s var(--ease), transform 0.8s var(--ease), var(--theme-transition); }
-.reveal.is-visible { opacity: 1; transform: none; }
-.no-js .reveal { opacity: 1; transform: none; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
   .link-more span, .btn { transition: none; }
+}
+
+/* ========== Touch & pointer ========== */
+a, button { touch-action: manipulation; }
+.btn, .theme-toggle, .nav__links a {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Hover only where a real mouse exists, so taps on phones don't leave a stuck hover state */
+@media (hover: hover) and (pointer: fine) {
+  a:hover { color: var(--accent-hover); }
+  .btn:hover { background: var(--accent-hover); color: #fff; }
+  .link-more:hover { text-decoration: underline; }
+  .link-more:hover span { transform: translateX(3px); }
+  .nav__brand:hover { color: var(--text); }
+  .nav__links a:hover { opacity: 1; color: var(--text); }
+  .theme-toggle:hover { background: var(--surface); }
 }

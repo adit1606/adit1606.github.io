@@ -6,10 +6,18 @@
   <title>Aditya Subramaniam — Portfolio</title>
   <meta name="description" content="Aditya Subramaniam, Computing Science student at Thompson Rivers University. Projects in C++, JavaScript and web development.">
   <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000000">
   <link rel="stylesheet" href="styles.css">
   <script>
     // Apply a saved theme before paint to avoid a flash
-    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+    try {
+      const t = localStorage.getItem("theme");
+      if (t) {
+        document.documentElement.dataset.theme = t;
+        document.querySelectorAll('meta[name="theme-color"]').forEach((m) => m.content = t === "dark" ? "#000000" : "#ffffff");
+      }
+    } catch (e) {}
   </script>
 </head>
 <body>
@@ -57,7 +65,7 @@
         <p class="section__body">Client work and coursework I've designed and built.</p>
 
         <div class="projects">
-          <article class="card project project--featured reveal">
+          <article class="card project project--featured">
             <div class="project__visual" aria-hidden="true">
               <div class="log">
                 <div class="log__head">Incidents</div>
@@ -85,7 +93,7 @@
             </div>
           </article>
 
-          <article class="card project reveal">
+          <article class="card project">
             <div class="project__visual" aria-hidden="true">
               <div class="calc">
                 <div class="calc__screen">36</div>
@@ -115,7 +123,7 @@
             </div>
           </article>
 
-          <article class="card project reveal">
+          <article class="card project">
             <div class="project__visual" aria-hidden="true">
               <div class="browser">
                 <div class="browser__bar"><i></i><i></i><i></i></div>
@@ -151,15 +159,15 @@
       <div class="section__inner">
         <h2 class="section__headline" id="skills-title">Skills.</h2>
         <div class="skills">
-          <div class="skills__col reveal">
+          <div class="skills__col">
             <h3>Languages</h3>
             <ul><li>JavaScript</li><li>C++</li><li>HTML &amp; CSS</li><li>SQL</li></ul>
           </div>
-          <div class="skills__col reveal">
+          <div class="skills__col">
             <h3>Engineering</h3>
             <ul><li>Object-oriented design</li><li>Data structures &amp; algorithms</li><li>Software architecture</li><li>Database design</li><li>Git</li></ul>
           </div>
-          <div class="skills__col reveal">
+          <div class="skills__col">
             <h3>Systems</h3>
             <ul><li>Computer networks</li><li>Network security</li><li>Software engineering process</li></ul>
           </div>
@@ -188,7 +196,7 @@
             platformers and action games.
           </p>
         </div>
-        <dl class="card facts reveal">
+        <dl class="card facts">
           <div><dt>Studying</dt><dd>B.Sc. Computing Science, TRU</dd></div>
           <div><dt>Focus</dt><dd>Web front end &amp; OOP</dd></div>
           <!-- TODO: confirm your location and availability -->
