@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aditya Subramaniam — Portfolio</title>
+  <meta name="description" content="Aditya Subramaniam, Computing Science student at Thompson Rivers University. Projects in C++, JavaScript and web development.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply a saved theme before paint to avoid a flash
+    try { const t = localStorage.getItem("theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="nav__inner">
+      <a class="nav__brand" href="#top">Aditya Subramaniam</a>
+      <nav aria-label="Primary">
+        <ul class="nav__links">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch colour theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <!-- TODO: put your resume PDF in this folder as resume.pdf -->
+      <a class="btn btn--pill btn--small" href="resume.pdf" download>Resume</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero" id="top">
+      <p class="hero__kicker">Computing Science · Thompson Rivers University</p>
+      <h1 class="hero__title">Aditya Subramaniam</h1>
+      <p class="hero__lede">
+        I build web apps in JavaScript, most recently a health and safety
+        incident tracker for Dawson Construction.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--pill" href="#projects">See my work</a>
+        <a class="link-more" href="#contact">Get in touch <span aria-hidden="true">›</span></a>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section section--surface" id="projects" aria-labelledby="projects-title">
+      <div class="section__inner">
+        <h2 class="section__headline" id="projects-title">Projects.</h2>
+        <p class="section__body">Client work and coursework I've designed and built.</p>
+
+        <div class="projects">
+          <article class="card project project--featured reveal">
+            <div class="project__visual" aria-hidden="true">
+              <div class="log">
+                <div class="log__head">Incidents</div>
+                <div class="log__row"><i class="log__dot log__dot--open"></i><span class="log__line"></span><span class="log__tag">Open</span></div>
+                <div class="log__row"><i class="log__dot log__dot--review"></i><span class="log__line log__line--short"></span><span class="log__tag">In review</span></div>
+                <div class="log__row"><i class="log__dot log__dot--closed"></i><span class="log__line"></span><span class="log__tag">Closed</span></div>
+                <div class="log__row"><i class="log__dot log__dot--closed"></i><span class="log__line log__line--short"></span><span class="log__tag">Closed</span></div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__badge">Capstone · Client project</p>
+              <h3 class="project__title">Health &amp; safety incident tracker</h3>
+              <p class="project__meta">JavaScript · Supabase · COMP 4910</p>
+              <p class="project__text">
+                A web app for Dawson Construction to record workplace health
+                and safety incidents and keep track of compliance in one place.
+                Built by a team of four for a real client as my final-year
+                capstone. I worked on the front end.
+              </p>
+              <ul class="project__points">
+                <li>Front end in plain JavaScript, HTML and CSS</li>
+                <li>Incident data stored in and loaded from Supabase</li>
+                <li>Requirements gathered directly with the client</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__visual" aria-hidden="true">
+              <div class="calc">
+                <div class="calc__screen">36</div>
+                <div class="calc__keys">
+                  <span>7</span><span>8</span><span>9</span><span class="op">÷</span>
+                  <span>4</span><span>5</span><span>6</span><span class="op">×</span>
+                  <span>1</span><span>2</span><span>3</span><span class="op">−</span>
+                  <span class="wide">0</span><span>.</span><span class="op">+</span>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__meta">C++ · COMP 3141</p>
+              <h3 class="project__title">Object-oriented calculator</h3>
+              <p class="project__text">
+                A command-line calculator built around a class hierarchy. Each
+                operation is its own derived class, dispatched through
+                polymorphism, across a multi-file build planned with a written
+                design document.
+              </p>
+              <ul class="project__points">
+                <li>Inheritance and virtual functions</li>
+                <li>Exception handling and input validation</li>
+                <li>Encapsulation and multi-file compilation</li>
+              </ul>
+              <a class="link-more" href="https://github.com/adit1606/OOPS-calculator">View code <span aria-hidden="true">›</span></a>
+            </div>
+          </article>
+
+          <article class="card project reveal">
+            <div class="project__visual" aria-hidden="true">
+              <div class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i></div>
+                <div class="browser__page">
+                  <span class="b b--hero"></span>
+                  <span class="b"></span><span class="b"></span><span class="b"></span>
+                </div>
+              </div>
+            </div>
+            <div class="project__body">
+              <p class="project__meta">HTML · CSS · JavaScript · PHP · MySQL · COMP 4621</p>
+              <h3 class="project__title">Personal website</h3>
+              <p class="project__text">
+                A three-page personal website (profile, course info and contact
+                form), built in stages for TRU's web development course.
+              </p>
+              <ul class="project__points">
+                <li>Static HTML, CSS and JavaScript with form validation</li>
+                <li>PHP version that saves messages to MySQL</li>
+                <li>jQuery click counter beside a plain JavaScript one</li>
+              </ul>
+              <div class="project__links">
+                <a class="link-more" href="https://github.com/adit1606/comp4621-web-app">View code <span aria-hidden="true">›</span></a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="section__inner">
+        <h2 class="section__headline" id="skills-title">Skills.</h2>
+        <div class="skills">
+          <div class="skills__col reveal">
+            <h3>Languages</h3>
+            <ul><li>JavaScript</li><li>C++</li><li>HTML &amp; CSS</li><li>SQL</li></ul>
+          </div>
+          <div class="skills__col reveal">
+            <h3>Engineering</h3>
+            <ul><li>Object-oriented design</li><li>Data structures &amp; algorithms</li><li>Software architecture</li><li>Database design</li><li>Git</li></ul>
+          </div>
+          <div class="skills__col reveal">
+            <h3>Systems</h3>
+            <ul><li>Computer networks</li><li>Network security</li><li>Software engineering process</li></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--surface" id="about" aria-labelledby="about-title">
+      <div class="section__inner about">
+        <div class="about__text">
+          <h2 class="section__headline" id="about-title">About.</h2>
+          <p class="about__lead">
+            I'm finishing a Bachelor of Computing Science through Thompson
+            Rivers University Open Learning, where studying online has taught
+            me to learn independently and deliver on my own schedule.
+          </p>
+          <p>
+            My coursework spans web development, computer networks, network
+            security, software engineering, database systems and software
+            architecture. For my final-year capstone, I'm on a team of four
+            building a health and safety incident tracking web app for Dawson
+            Construction, where I work on the front end.
+          </p>
+          <p>
+            Outside class, I'm drawn to game development, especially 2D
+            platformers and action games.
+          </p>
+        </div>
+        <dl class="card facts reveal">
+          <div><dt>Studying</dt><dd>B.Sc. Computing Science, TRU</dd></div>
+          <div><dt>Focus</dt><dd>Web front end &amp; OOP</dd></div>
+          <!-- TODO: confirm your location and availability -->
+          <div><dt>Based in</dt><dd>British Columbia, Canada</dd></div>
+          <div><dt>Looking for</dt><dd>Entry-level roles in IT</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <h2 class="contact__title" id="contact-title">Let's work together.</h2>
+      <p class="contact__body">The fastest way to reach me is email.</p>
+      <a class="btn btn--pill btn--large" href="mailto:aditya.student.16@gmail.com">aditya.student.16@gmail.com</a>
+      <ul class="contact__links">
+        <li><a class="link-more" href="https://github.com/adit1606">GitHub <span aria-hidden="true">›</span></a></li>
+        <li><a class="link-more" href="https://www.linkedin.com/in/aditya-balaji-subramanian-115011266/">LinkedIn <span aria-hidden="true">›</span></a></li>
+        <li><a class="link-more" href="resume.pdf" download>Download resume <span aria-hidden="true">›</span></a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Copyright © <span id="year">2026</span> Aditya Subramaniam.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
